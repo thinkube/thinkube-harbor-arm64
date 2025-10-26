@@ -1,0 +1,27 @@
+# Build artifacts
+*.tar
+*.tar.gz
+
+# Source directories (too large for git)
+harbor-source/
+harbor-scanner-trivy/
+
+# Original binaries (reference only)
+*-original
+
+# Temporary files
+.DS_Store
+*.swp
+*.swo
+*~
+# Binaries (built during Docker build)
+registry-image/registry
+trivy-adapter-image/trivy-arm64
+trivy-adapter-image/scanner-trivy
+
+# Root copies (not needed)
+registry
+scanner-trivy
+trivy-arm64
+*-original
+trivy-entrypoint.sh
