@@ -32,32 +32,64 @@ These patches replace x86_64 binaries with ARM64 versions to enable Harbor deplo
 
 **Registry (ARM64)**:
 ```
-ghcr.io/your-username/harbor-registry-arm64:v2.14.0
+ghcr.io/thinkube/thinkube-harbor-arm64/harbor-registry-arm64:v2.14.0
 ```
 
 **Trivy Adapter (ARM64)**:
 ```
-ghcr.io/your-username/harbor-trivy-adapter-arm64:v2.14.0
+ghcr.io/thinkube/thinkube-harbor-arm64/harbor-trivy-adapter-arm64:v2.14.0
 ```
+
+**Note**: These 2 images are NOT sufficient for a complete Harbor deployment. You also need the other components (core, portal, jobservice, registryctl, database) from ranichowdary's images.
 
 ## Usage
 
 ### Harbor Helm Chart
 
 ```yaml
+# Complete ARM64 configuration for Harbor v2.14.0
+core:
+  image:
+    repository: ranichowdary/harbor-core
+    tag: latest
+
+portal:
+  image:
+    repository: ranichowdary/harbor-portal
+    tag: latest
+
+jobservice:
+  image:
+    repository: ranichowdary/jobservice-harbor
+    tag: latest
+
 registry:
   registry:
     image:
-      repository: ghcr.io/your-username/harbor-registry-arm64
+      repository: ghcr.io/thinkube/thinkube-harbor-arm64/harbor-registry-arm64
       tag: v2.14.0
+  controller:
+    image:
+      repository: ranichowdary/harbor-registryctl
+      tag: latest
+
+database:
+  internal:
+    image:
+      repository: ranichowdary/harbor-db
+      tag: latest
+
+redis:
+  internal:
+    image:
+      repository: valkey/valkey
+      tag: latest
 
 trivy:
   enabled: true
   image:
-    repository: ghcr.io/your-username/harbor-trivy-adapter-arm64
+    repository: ghcr.io/thinkube/thinkube-harbor-arm64/harbor-trivy-adapter-arm64
     tag: v2.14.0
-  # IMPORTANT: Override command to bypass x86 shell
-  command: ["/home/scanner/bin/scanner-trivy"]
 ```
 
 ### Ansible (Thinkube-style)
