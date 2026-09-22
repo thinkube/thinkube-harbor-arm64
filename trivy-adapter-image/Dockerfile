@@ -1,3 +1,6 @@
+# Copyright Alejandro Martínez Corriá and the Thinkube contributors
+# SPDX-License-Identifier: Apache-2.0
+
 # Dockerfile to fix goharbor/trivy-adapter-photon for ARM64
 # Problem: The official image has x86_64 binaries that won't run on ARM64
 # Solution: Replace both Trivy scanner and scanner-trivy adapter with ARM64 versions

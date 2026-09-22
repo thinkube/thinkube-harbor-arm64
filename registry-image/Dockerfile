@@ -1,3 +1,6 @@
+# Copyright Alejandro Martínez Corriá and the Thinkube contributors
+# SPDX-License-Identifier: Apache-2.0
+
 # Dockerfile to fix ranichowdary/registry-harbor for ARM64
 # Problem: The ranichowdary image has x86_64 registry binary that won't run on ARM64
 # Solution: Replace it with ARM64 binary from official registry:2 image
