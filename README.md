@@ -51,6 +51,10 @@ These 2 images alone are not enough for a Harbor deployment. On arm64 the Thinku
 - **Community images** (5): core, portal, jobservice, registryctl, database (from ranichowdary/harbor-*)
 - **Redis replacement** (1): valkey/valkey (BSD-licensed Redis alternative)
 
+## Standalone use
+
+Standalone use is not supported. The images are built and tested only as part of the Thinkube platform. The licence lets you use them anywhere, but issues and questions about using an image outside Thinkube are not answered.
+
 ## Tested Configuration
 
 - **Platform**: NVIDIA DGX Spark (ARM64/aarch64)
